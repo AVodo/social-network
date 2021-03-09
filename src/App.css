@@ -9,20 +9,6 @@
   grid-template-columns: 2fr 10fr;
 }
 
-.header {
-  grid-area: h;
-  background: gray;
-}
-.nav img {
-  height: 60px;
-}
 
-.nav {
-  grid-area: n;
-  background: gold;
-}
 
-.content {
-  grid-area: c;
-  background: royalblue;
-}
+

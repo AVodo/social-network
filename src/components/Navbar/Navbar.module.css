@@ -9,4 +9,9 @@
 
 .item a {
     color: #D500F9;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: #ffd21b;
 }

@@ -11,6 +11,15 @@
 
 }
 
+.dialog a {
+    text-decoration: none;
+    color: #D500F9;
+}
+
+.dialog a.active {
+    color: #ffd21b;
+}
+
 .messages {
     padding: 10px;
 }

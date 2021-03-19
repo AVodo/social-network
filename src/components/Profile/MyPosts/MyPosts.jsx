@@ -1,7 +1,11 @@
-import style from './MyPosts.module.css'
+import style from './MyPosts.module.css';
 import Post from "./Post/Post";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+    let posts = props.postsD
+        .map(post => <Post message={post.message} like={post.likeCount}/>);
+
     return (
         <div>
             My posts
@@ -9,10 +13,9 @@ const MyPosts = () => {
                 <textarea></textarea>
                 <button>Add post</button>
             </div>
-            <Post message='hello' like='15'/>
-            <Post message='first' like='10'/>
+            {posts}
         </div>
-    )
+    );
 }
 
-export default MyPosts
+export default MyPosts;

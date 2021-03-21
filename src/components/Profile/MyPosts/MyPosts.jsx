@@ -3,7 +3,7 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    let posts = props.postsD
+    let posts = props.state
         .map(post => <Post message={post.message} like={post.likeCount}/>);
 
     return (

@@ -1,5 +1,5 @@
-import React from 'react'
-import style from './ProfileInfo.module.css'
+import React from 'react';
+import style from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
     return (
@@ -10,7 +10,7 @@ const ProfileInfo = (props) => {
             </div>
             <div>ava desc</div>
         </div>
-    )
+    );
 }
 
-export default ProfileInfo
+export default ProfileInfo;

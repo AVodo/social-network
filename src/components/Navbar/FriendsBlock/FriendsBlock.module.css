@@ -1,0 +1,9 @@
+.item {
+    color: #D500F9;
+}
+
+.item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+}

@@ -1,8 +1,9 @@
-import React from "react"
-import style from './Navbar.module.css'
-import {NavLink} from "react-router-dom"
+import React from "react";
+import style from './Navbar.module.css';
+import {NavLink} from "react-router-dom";
+import FriendsBlock from "./FriendsBlock/FriendsBlock";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <nav className={style.nav}>
             <img src='https://cdn.logo.com/hotlink-ok/logo-social.png'/>
@@ -26,8 +27,11 @@ const Navbar = () => {
             <div className={style.item}>
                 <NavLink to='/settings' activeClassName={style.active}>Settings</NavLink>
             </div>
+
+            <FriendsBlock state={props.state} />
+
         </nav>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

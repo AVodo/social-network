@@ -1,4 +1,4 @@
-import style from './Post.module.css'
+import style from './Post.module.css';
 
 const Post = (props) => {
     return (
@@ -9,7 +9,7 @@ const Post = (props) => {
                 <span>Like {props.like}</span>
             </div>
         </div>
-    )
+    );
 }
 
-export default Post
+export default Post;

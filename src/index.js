@@ -1,6 +1,24 @@
 import React from 'react';
 import './index.css';
-import {renderNewTree} from "./render";
-import state from "./red/state";
+import store from "./red/state";
+import ReactDOM from 'react-dom';
+import App from './App';
+import {BrowserRouter} from "react-router-dom";
 
-renderNewTree(state);
+
+export let renderNewTree = (props) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App state={props.getState()}
+                     dispatch={props.dispatch.bind(props)}
+                />
+            </BrowserRouter>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+
+renderNewTree(store);
+
+store.subscribe(renderNewTree);

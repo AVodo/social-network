@@ -1,3 +1,12 @@
+import profileReducer from './profileReducer';
+import dialogReducer from './dialogReducer';
+import sideBarReducer from './sideBarReducer';
+
+const ADD_POST = "ADD-POST";
+const ADD_POST_TEXT = "ADD-POST-TEXT";
+const ADD_MESSAGE_TO_DIALOG = "ADD-MESSAGE-TO-DIALOG";
+const ADD_MESSAGE_TEXT = "ADD-MESSAGE-TEXT";
+
 let store = {
 
     _state: {
@@ -25,7 +34,7 @@ let store = {
             ],
             newDialogMessage: ''
         },
-        siteBar: {
+        sideBar: {
             friendsData: [
                 {image: 'https://i.pinimg.com/originals/e8/83/7b/e8837b00067930f307a825c2ff74f3fa.jpg', name: 'Vika'},
                 {image: 'https://lover.ru/cache/images/9c4d96175c1835df4854e91008218203/resizeCrop_700_525_center_center__.jpg', name: 'Gosling'},
@@ -45,40 +54,15 @@ let store = {
 
     dispatch(action) {
 
-        if (action.type === "ADD-POST"){
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
+        this._state.sideBar = sideBarReducer(this._state.sideBar, action);
 
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likeCount: 90
-            }
-            this._state.profilePage.newPostText = '';
-            this._state.profilePage.postsData.push(newPost);
-            this._callSubscriber(this);
-
-        } else if (action.type === "ADD-POST-TEXT") {
-
-            this._state.profilePage.newPostText = action.postText;
-            this._callSubscriber(this);
-
-        } else if (action.type === "ADD-MESSAGE-TO-DIALOG") {
-
-            let newMessage = {
-                id: 4,
-                message: this._state.dialogPage.newDialogMessage
-            }
-            this._state.dialogPage.newDialogMessage = '';
-            this._state.dialogPage.messagesData.push(newMessage);
-            this._callSubscriber(this);
-
-        } else if (action.type === "ADD-MESSAGE-TEXT") {
-
-            this._state.dialogPage.newDialogMessage = action.messageText;
-            this._callSubscriber(this);
-
-        }
+        this._callSubscriber(this);
 
     }
 }
+
+
 
 export default store;

@@ -1,7 +1,9 @@
 import React from "react";
 import style from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {addPostText} from "../../../red/state";
+import {addPostActionCreator, addPostTextActionCreator} from "../../../red/profileReducer";
+
+
 
 const MyPosts = (props) => {
 
@@ -11,12 +13,12 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPosts = () => {
-        props.dispatch({type: "ADD-POST"});
+        props.dispatch(addPostActionCreator());
     }
 
     let postText = () => {
         let text = newPostElement.current.value;
-        props.dispatch({type: "ADD-POST-TEXT", postText: text});
+        props.dispatch(addPostTextActionCreator(text));
     }
 
     return (

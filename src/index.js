@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import store from "./red/state";
+import store from "./red/reduxStore";
 import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
@@ -21,4 +21,6 @@ export let renderNewTree = (props) => {
 
 renderNewTree(store);
 
-store.subscribe(renderNewTree);
+store.subscribe(() => {
+    renderNewTree(store);
+});

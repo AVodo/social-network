@@ -1,7 +1,24 @@
 const ADD_MESSAGE_TO_DIALOG = "ADD-MESSAGE-TO-DIALOG";
 const ADD_MESSAGE_TEXT = "ADD-MESSAGE-TEXT";
 
-const dialogReducer = (state, action) => {
+let initialState = {
+    dialogsData: [
+        {id: '1', name: 'Andr'},
+        {id: '2', name: 'Vova'},
+        {id: '3', name: 'Kate'},
+        {id: '4', name: 'Maxi'},
+        {id: '5', name: 'Kate'},
+    ],
+    messagesData: [
+        {id: '1', message: 'Hi'},
+        {id: '2', message: 'hello'},
+        {id: '3', message: 'hello'},
+        {id: '4', message: 'how are u?'}
+    ],
+    newDialogMessage: ''
+}
+
+const dialogReducer = (state = initialState, action) => {
 
     switch (action.type) {
 

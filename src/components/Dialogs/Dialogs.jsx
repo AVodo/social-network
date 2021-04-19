@@ -5,12 +5,12 @@ import Message from "./Message/Message";
 import {addMessageTextActionCreator, addMessageToDialogActionCreator} from "../../redux/dialogReducer";
 
 const Dialogs = (props) => {
-    debugger;
+
     let dialogs = props.dialogsData
-        .map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
+        .map(dialog => <Dialog name={dialog.name}  id={dialog.id} />)
 
     let messages = props.messagesData
-        .map(message => <Message text={message.message}/>)
+        .map(message => <Message text={message.message} />)
 
     let newMessage = React.createRef();
 

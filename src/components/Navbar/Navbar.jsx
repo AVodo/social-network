@@ -1,11 +1,12 @@
 import React from "react";
 import style from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import FriendsBlock from "./FriendsBlock/FriendsBlock";
+import FriendsBlockContainer from "./FriendsBlock/FriendsBlockContainer";
 
 const Navbar = (props) => {
     return (
         <nav className={style.nav}>
+
             <img src='https://cdn.logo.com/hotlink-ok/logo-social.png'/>
 
             <div className={style.item}>
@@ -21,6 +22,10 @@ const Navbar = (props) => {
             </div>
 
             <div className={style.item}>
+                <NavLink to='/users' activeClassName={style.active}>Users</NavLink>
+            </div>
+
+            <div className={style.item}>
                 <NavLink to='/music' activeClassName={style.active}>Music</NavLink>
             </div>
 
@@ -28,7 +33,7 @@ const Navbar = (props) => {
                 <NavLink to='/settings' activeClassName={style.active}>Settings</NavLink>
             </div>
 
-            <FriendsBlock state={props.state} />
+            <FriendsBlockContainer/>
 
         </nav>
     );

@@ -1,16 +1,11 @@
 import React from "react";
 import style from './FriendsBlock.module.css';
+import OneFriend from "./OneFriend/OneFriend";
 
 const FriendsBlock = (props) => {
-    let friends = props.state.friendsData
-        .map(friend => {
-            return (
-                <div>
-                    <img src={friend.image}/><br/>
-                    {friend.name}
-                </div>
-            );
-        });
+
+    let friends = props.friendsData
+        .map(friend => <OneFriend image={friend.image} name={friend.name} />);
 
     return (
         <div>

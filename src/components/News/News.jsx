@@ -4,17 +4,17 @@ import NewsPost from "./NewsPost/NewsPost";
 
 const News = (props) => {
 
-    let posts = props.state.newsData.map(post => <NewsPost text={post.postText} />);
+    let posts = props.newsData.map(post => <NewsPost text={post.postText} />);
 
     let newNewsElement = React.createRef();
 
     let newsText = () => {
         let text = newNewsElement.current.value;
-        props.dispatch(addNewsTextActionCreator(text));
+        props.newsText(text);
     }
 
     let addNews = () => {
-        props.dispatch(addNewsActionCreator());
+        props.addNews();
     }
 
     return (
@@ -22,7 +22,7 @@ const News = (props) => {
 
             <h1>News</h1>
 
-            <textarea onChange={newsText} ref={newNewsElement} value={props.state.newNewsText}/>
+            <textarea onChange={newsText} ref={newNewsElement} value={props.newNewsText}/>
             <button onClick={addNews}>add news</button>
 
             {posts}

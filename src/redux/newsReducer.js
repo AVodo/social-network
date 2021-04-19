@@ -18,12 +18,16 @@ const newsReducer = (state = initialState, action) => {
                 postText: state.newNewsText,
                 likeCount: 16
             }
-            state.newNewsText = '';
-            state.newsData.push(newPost);
-            return state;
+            return {
+                ...state,
+                newsData: [...state.newsData, newPost],
+                newNewsText: ''
+            }
         case ADD_NEWS_TEXT:
-            state.newNewsText = action.newsText;
-            return state;
+            return {
+                ...state,
+                newNewsText: action.newsText
+            }
         default:
             return state;
     }

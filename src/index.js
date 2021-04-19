@@ -4,15 +4,16 @@ import store from "./redux/reduxStore";
 import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 
 
 export let renderNewTree = (props) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={props.getState()}
-                     dispatch={props.dispatch.bind(props)}
-                />
+                <Provider store={props}>
+                    <App/>
+                </Provider>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
@@ -21,6 +22,3 @@ export let renderNewTree = (props) => {
 
 renderNewTree(store);
 
-store.subscribe(() => {
-    renderNewTree(store);
-});

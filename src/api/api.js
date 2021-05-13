@@ -23,6 +23,12 @@ export const profileAPI = {
         return instance.get(`profile/${userId}`);
     },
     setAuthData(){
-        return instance.get(`auth/me`)
+        return instance.get(`auth/me`);
+    },
+    getUserStatus(userId){
+        return instance.get(`profile/status/${userId}`);
+    },
+    updateUserStatus(status){
+        return instance.put(`profile/status`, {status: status});
     }
 }

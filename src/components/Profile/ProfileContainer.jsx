@@ -1,10 +1,10 @@
 import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import * as axios from "axios";
-import {setUserProfile} from "../../redux/profileReducer";
+import {getProfileInfo, getUserStatus, updateUserStatus} from "../../redux/profileReducer";
 import {withRouter} from "react-router";
-import {profileAPI} from "../../api/api";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class ProfileContainer extends React.Component {
@@ -14,20 +14,25 @@ class ProfileContainer extends React.Component {
         if(!userId){
             userId=16981;
         }
-        profileAPI.getProfileInfo(userId).then(response => {
-                this.props.setUserProfile(response.data);
-            });
+        this.props.getProfileInfo(userId);
+        this.props.getUserStatus(userId);
     }
 
     render() {
-        return <Profile {...this.props} profile={this.props.profile}/>
+        return <Profile {...this.props}
+                        profile={this.props.profile}
+                        status={this.props.status}
+                        updateUserStatus={this.props.updateUserStatus}/>
     }
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    status: state.profilePage.status
 })
 
-let WithUrlContainerComponent = withRouter(ProfileContainer)
-
-export default connect(mapStateToProps, {setUserProfile})(WithUrlContainerComponent);
+export default compose(
+    connect(mapStateToProps, {getProfileInfo, updateUserStatus, getUserStatus}),
+    withRouter,
+    //withAuthRedirect
+)(ProfileContainer);

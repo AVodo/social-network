@@ -2,6 +2,7 @@ import React from "react";
 import style from './Dialogs.module.css';
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
+import {Redirect} from "react-router-dom"
 import {addMessageTextActionCreator, addMessageToDialogActionCreator} from "../../redux/dialogReducer";
 
 const Dialogs = (props) => {

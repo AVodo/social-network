@@ -23,12 +23,24 @@ export const profileAPI = {
         return instance.get(`profile/${userId}`);
     },
     setAuthData(){
-        return instance.get(`auth/me`);
+        return authAPI.me();
     },
     getUserStatus(userId){
         return instance.get(`profile/status/${userId}`);
     },
     updateUserStatus(status){
-        return instance.put(`profile/status`, {status: status});
+        return instance.put(`profile/status`, status);
+    }
+}
+
+export const authAPI = {
+    logIn(email, password, rememberMe = false){
+        return instance.post(`auth/login`, {email, password, rememberMe});
+    },
+    logOut(){
+        return instance.delete(`auth/login`);
+    },
+    me(){
+        return instance.get(`auth/me`);
     }
 }
